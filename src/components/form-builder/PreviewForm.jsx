@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { message } from "antd"; 
 
 function PreviewForm({ form, onClose }) {
   const [formValues, setFormValues] = useState({});
@@ -25,7 +26,10 @@ function PreviewForm({ form, onClose }) {
   };
 
   const handleSubmit = () => {
-    if (!validate()) return;
+    if (!validate()) {
+      message.error("Please fill all required fields"); 
+      return;
+    }
 
     const submission = {
       formId: Date.now(),
@@ -33,15 +37,32 @@ function PreviewForm({ form, onClose }) {
     };
 
     localStorage.setItem("formSubmission", JSON.stringify(submission));
-    alert("Form submitted and stored in localStorage");
-    onClose();
+    message.success("Form submitted and stored in localStorage"); 
+    if (onClose) onClose(); 
   };
 
   const renderField = (field) => {
     switch (field.type) {
       case "input":
+        let htmlType = "text";
+        if (field.inputType) {
+          switch (field.inputType.toLowerCase()) {
+            case "number":
+              htmlType = "number";
+              break;
+            case "email":
+              htmlType = "email";
+              break;
+            case "password":
+              htmlType = "password";
+              break;
+            default:
+              htmlType = "text";
+          }
+        }
         return (
           <Input
+            type={htmlType}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
             placeholder={field.placeholder || ""}
             value={formValues[field.id] || ""}

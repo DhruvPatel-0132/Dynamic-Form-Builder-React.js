@@ -161,7 +161,7 @@ function RadioButton({ field, updateField }) {
             <button
               type="button"
               onClick={handleAddOption}
-              className="text-primary text-sm font-medium"
+              className="text-primary text-sm font-medium border-2 rounded-xl p-2"
             >
               + Add Option
             </button>

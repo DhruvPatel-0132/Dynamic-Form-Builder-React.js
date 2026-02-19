@@ -1,6 +1,5 @@
 import React from "react";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
+import { Input } from "../ui/input";
 
 function FieldCard({ field, isSelected, onSelect }) {
   const renderPreview = () => {
@@ -41,12 +40,9 @@ function FieldCard({ field, isSelected, onSelect }) {
         isSelected ? "ring-2 ring-primary" : ""
       }`}
     >
-      {/* Field Label */}
       <div className="flex items-center justify-between">
         <label className="font-medium">{field.label}</label>
       </div>
-
-      {/* Field Preview */}
       <div>{renderPreview()}</div>
     </div>
   );

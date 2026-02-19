@@ -131,7 +131,7 @@ function CheckBox({ field, updateField }) {
             <button
               type="button"
               onClick={handleAddOption}
-              className="text-primary text-sm"
+              className="text-primary text-sm border-2 rounded-xl p-2"
             >
               + Add Option
             </button>

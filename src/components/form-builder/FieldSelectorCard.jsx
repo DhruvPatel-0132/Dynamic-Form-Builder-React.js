@@ -6,26 +6,10 @@ const FieldSelectorCard = forwardRef(({ open, onSelect }, ref) => {
   if (!open) return null;
 
   const fields = [
-    {
-      title: "Input Field",
-      description: "Text, number, email, or password input",
-      type: "input",
-    },
-    {
-      title: "Dropdown",
-      description: "Select one option from a list",
-      type: "dropdown",
-    },
-    {
-      title: "Radio Buttons",
-      description: "Select one option from multiple choices",
-      type: "radio",
-    },
-    {
-      title: "Checkbox",
-      description: "Select multiple options",
-      type: "checkbox",
-    },
+    { title: "Input Field", description: "Text, number, email, or password input", type: "input" },
+    { title: "Dropdown", description: "Select one option from a list", type: "dropdown" },
+    { title: "Radio Buttons", description: "Select one option from multiple choices", type: "radio" },
+    { title: "Checkbox", description: "Select multiple options", type: "checkbox" },
   ];
 
   return (
@@ -38,10 +22,7 @@ const FieldSelectorCard = forwardRef(({ open, onSelect }, ref) => {
             className="flex flex-col gap-1 p-3 rounded-md hover:bg-gray-100 text-left w-full"
           >
             <CardTitle>{field.title}</CardTitle>
-
-            <p className="text-sm text-muted-foreground">
-              {field.description}
-            </p>
+            <p className="text-sm text-muted-foreground">{field.description}</p>
           </button>
         ))}
       </div>
